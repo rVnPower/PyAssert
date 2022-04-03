@@ -1,10 +1,25 @@
 from errors import AssertionFailed
 
-def assertEq(*values):
-    valueToCheck = values[0]
+def assert_eq(left, right):
+    if not left == right:
+        raise AssertionFailed(left, right, "==")
 
-    for index, value in enumerate(values[1:]):
-        if value != valueToCheck:
-            raise AssertionFailed(values, index+1, "==")
+def assert_ne(left, right):
+    if not left != right:
+        raise AssertionFailed(left, right, "!=")
 
-assertEq(5, 2+4)
+def assert_gt(left, right):
+    if not left > right:
+        raise AssertionFailed(left, right, ">")
+
+def assert_lt(left, right):
+    if not left < right:
+        raise AssertionFailed(left, right, "<")
+
+def assert_ge(left, right):
+    if not left >= right:
+        raise AssertionFailed(left, right, ">=")
+
+def assert_le(left, right):
+    if not left <= right:
+        raise AssertionFailed(left, right, "<=")
